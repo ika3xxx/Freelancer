@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>Freelancer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="css/index.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Top Bar -->
+  <div class="bg-gray-900 text-gray-300 text-sm">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-4 py-1">
+      <div class="flex space-x-6">
+        <a class="hover:text-white flex items-center space-x-1" href="#">
+          <i class="fas fa-phone-alt"></i>
+          <span>Hotline: 0000 000 000</span>
+        </a>
+        <a class="hover:text-white flex items-center space-x-1" href="#">
+          <i class="fas fa-envelope"></i>
+          <span>Email</span>
+        </a>
+      </div>
+      <div class="flex space-x-4">
+        <a class="hover:text-white" href="html/login.html">Đăng nhập</a>
+        <a class="hover:text-white font-semibold border border-gray-500 px-3 py-1 rounded hover:border-white" href="html/login.html">Đăng ký</a>
+      </div>
+    </div>
+  </div>
+  <!-- Header / Navbar -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <a class="flex items-center space-x-3" href="#">
+        <img alt="Vlance logo with text in blue and orange colors" class="h-10 w-auto" height="40" src="https://storage.googleapis.com/a1aa/image/aa811908-7f03-435e-2ac5-ba4104eef419.jpg" width="120"/>
+      </a>
+      <nav class="hidden md:flex space-x-8 font-semibold text-gray-700">
+        <a class="hover:text-blue-600 transition" href="index.html">Trang chủ</a>
+        <a class="hover:text-blue-600 transition" href="#">Cộng đồng</a>
+        <a class="hover:text-blue-600 transition" href="#">Tin tức</a>
+        <a class="hover:text-blue-600 transition" href="#">Hướng dẫn</a>
+      </nav>
+      <div class="hidden md:flex space-x-4">
+        <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded" type="button">Đăng Dự Án</button>
+        <button class="border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-4 py-2 rounded" type="button">Tìm Freelancer</button>
+      </div>
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button aria-label="Open menu" class="text-gray-700 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600" id="mobile-menu-button">
+          <i class="fas fa-bars fa-lg"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="hidden md:hidden bg-white border-t border-gray-200" id="mobile-menu">
+      <nav class="flex flex-col space-y-1 px-4 py-3 font-semibold text-gray-700">
+        <a class="hover:text-blue-600 transition py-2 border-b border-gray-100" href="#">Trang chủ</a>
+        <a class="hover:text-blue-600 transition py-2 border-b border-gray-100" href="#">Dự án</a>
+        <a class="hover:text-blue-600 transition py-2 border-b border-gray-100" href="#">Freelancer</a>
+        <a class="hover:text-blue-600 transition py-2 border-b border-gray-100" href="#">Cộng đồng</a>
+        <a class="hover:text-blue-600 transition py-2 border-b border-gray-100" href="#">Tin tức</a>
+        <a class="hover:text-blue-600 transition py-2 border-b border-gray-100" href="#">Hướng dẫn</a>
+        <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded" type="button">Đăng Dự Án</button>
+        <button class="mt-2 border border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold px-4 py-2 rounded" type="button">Tìm Freelancer</button>
+      </nav>
+    </div>
+  </header>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-500 text-white">
+    <div class="max-w-7xl mx-auto px-4 py-16 flex flex-col md:flex-row items-center md:items-start md:space-x-12">
+      <div class="md:w-1/2 space-y-6">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Nền tảng kết nối Freelancer & Nhà tuyển dụng hàng đầu Việt Nam</h1>
+        <p class="text-lg md:text-xl font-medium max-w-xl">Tìm kiếm Freelancer chất lượng, đăng dự án nhanh chóng, an toàn và hiệu quả.</p>
+        <div class="flex space-x-4">
+          <button class="bg-white text-blue-600 font-semibold px-6 py-3 rounded shadow hover:bg-gray-100 transition">Đăng Dự Án Miễn Phí</button>
+          <button class="border border-white text-white font-semibold px-6 py-3 rounded hover:bg-white hover:text-blue-600 transition">Tìm Freelancer</button>
+        </div>
+        <div class="flex space-x-6 mt-8">
+          <div class="flex items-center space-x-3">
+            <img alt="Checkmark icon in blue circle representing verified projects" class="w-12 h-12" height="48" src="https://storage.googleapis.com/a1aa/image/bf442d5f-9d2d-4e52-0210-f09ccc4dcdd1.jpg" width="48"/>
+            <div>
+              <p class="font-bold text-2xl">10,000+</p>
+              <p class="text-sm">Dự án thành công</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3">
+            <img alt="Icon of a freelancer working on laptop in blue circle" class="w-12 h-12" height="48" src="https://storage.googleapis.com/a1aa/image/ff185e54-6137-475f-31a6-7080ecb5d26e.jpg" width="48"/>
+            <div>
+              <p class="font-bold text-2xl">15,000+</p>
+              <p class="text-sm">Freelancer chuyên nghiệp</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3">
+            <img alt="Star icon in blue circle representing high ratings" class="w-12 h-12" height="48" src="https://storage.googleapis.com/a1aa/image/0b784e6d-c44a-4a06-2b85-57286b319554.jpg" width="48"/>
+            <div>
+              <p class="font-bold text-2xl">4.9/5</p>
+              <p class="text-sm">Đánh giá trung bình</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+        <img alt="Illustration of a freelancer working on a laptop surrounded by project icons and charts" class="rounded-lg shadow-lg max-w-full h-auto" height="360" src="https://storage.googleapis.com/a1aa/image/539f621d-e442-42c3-62c1-ec2ddec49971.jpg" width="480"/>
+      </div>
+    </div>
+  </section>
+  <!-- Features Section -->
+  <section class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-900">Tại sao chọn Vlance?</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center">
+      <div class="space-y-4">
+        <img alt="Icon of a secure lock in blue circle representing secure transactions" class="mx-auto" height="80" src="https://storage.googleapis.com/a1aa/image/557ec9a9-ae3b-421a-abbf-53521b7a3fd9.jpg" width="80"/>
+        <h3 class="text-xl font-semibold text-blue-600">Giao dịch an toàn</h3>
+        <p class="text-gray-600">Hệ thống bảo mật và thanh toán minh bạch, đảm bảo quyền lợi cho cả hai bên.</p>
+      </div>
+      <div class="space-y-4">
+        <img alt="Icon of a lightning bolt in blue circle representing fast project matching" class="mx-auto" height="80" src="https://storage.googleapis.com/a1aa/image/94773128-3ac5-4994-b5e0-1da1dace7c1f.jpg" width="80"/>
+        <h3 class="text-xl font-semibold text-blue-600">Kết nối nhanh chóng</h3>
+        <p class="text-gray-600">Tìm kiếm và kết nối với freelancer phù hợp chỉ trong vài phút.</p>
+      </div>
+      <div class="space-y-4">
+        <img alt="Icon of a briefcase in blue circle representing professional freelancers" class="mx-auto" height="80" src="https://storage.googleapis.com/a1aa/image/11bd8093-f253-4ae9-d5ed-8ddbcff43d18.jpg" width="80"/>
+        <h3 class="text-xl font-semibold text-blue-600">Freelancer chuyên nghiệp</h3>
+        <p class="text-gray-600">Mạng lưới freelancer đa ngành nghề, có kỹ năng và kinh nghiệm thực tế.</p>
+      </div>
+      <div class="space-y-4">
+        <img alt="Icon of a star in blue circle representing high user satisfaction" class="mx-auto" height="80" src="https://storage.googleapis.com/a1aa/image/6d79ac4f-611b-462d-fd79-a678e7762653.jpg" width="80"/>
+        <h3 class="text-xl font-semibold text-blue-600">Đánh giá minh bạch</h3>
+        <p class="text-gray-600">Hệ thống đánh giá và phản hồi giúp bạn lựa chọn freelancer phù hợp nhất.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Projects Section -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-10 text-center">Dự án mới nhất</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="Website development project showing code and design elements on screen" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/c64e9f0c-6ec9-44eb-f51c-a7d22fb63d3e.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Thiết kế website bán hàng</h3>
+            <p class="text-gray-600 flex-grow">Tìm freelancer thiết kế website bán hàng chuyên nghiệp, giao diện đẹp, chuẩn SEO.</p>
+            <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+              <span><i class="fas fa-clock mr-1"></i>2 ngày trước</span>
+              <span><i class="fas fa-map-marker-alt mr-1"></i>Hà Nội</span>
+            </div>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="Mobile app development project showing smartphone and code icons" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/d01cf2a9-d607-4c50-1ccf-c7b6374f5655.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Phát triển ứng dụng di động</h3>
+            <p class="text-gray-600 flex-grow">Cần freelancer phát triển app iOS và Android cho dịch vụ đặt xe.</p>
+            <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+              <span><i class="fas fa-clock mr-1"></i>1 ngày trước</span>
+              <span><i class="fas fa-map-marker-alt mr-1"></i>TP. Hồ Chí Minh</span>
+            </div>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="Graphic design project showing color palette and design tools" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/19b491da-7c7b-4ea5-4989-792e26e77490.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Thiết kế logo thương hiệu</h3>
+            <p class="text-gray-600 flex-grow">Tìm freelancer thiết kế logo sáng tạo cho công ty startup công nghệ.</p>
+            <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+              <span><i class="fas fa-clock mr-1"></i>3 ngày trước</span>
+              <span><i class="fas fa-map-marker-alt mr-1"></i>Đà Nẵng</span>
+            </div>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="Content writing project showing notebook and pen on desk" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/a3d68284-b336-4ddb-c532-b9214ad455f4.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Viết bài chuẩn SEO</h3>
+            <p class="text-gray-600 flex-grow">Cần freelancer viết bài chuẩn SEO cho website thương mại điện tử.</p>
+            <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+              <span><i class="fas fa-clock mr-1"></i>5 giờ trước</span>
+              <span><i class="fas fa-map-marker-alt mr-1"></i>Cần Thơ</span>
+            </div>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="Digital marketing project showing analytics charts and ads icons" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/3c40b954-177c-4a8c-0711-055d75b27933.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Quảng cáo Facebook hiệu quả</h3>
+            <p class="text-gray-600 flex-grow">Tìm chuyên gia quảng cáo Facebook để tăng doanh số bán hàng.</p>
+            <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+              <span><i class="fas fa-clock mr-1"></i>12 giờ trước</span>
+              <span><i class="fas fa-map-marker-alt mr-1"></i>Hải Phòng</span>
+            </div>
+          </div>
+        </article>
+        <article class=" Rabg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="Video editing project showing film strip and editing tools" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/8858ab65-1ea1-45e0-0e01-bf86f30ab245.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Biên tập video quảng cáo</h3>
+            <p class="text-gray-600 flex-grow">Cần freelancer biên tập video quảng cáo sản phẩm thời trang.</p>
+            <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+              <span><i class="fas fa-clock mr-1"></i>1 ngày trước</span>
+              <span><i class="fas fa-map-marker-alt mr-1"></i>Bình Dương</span>
+            </div>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="Translation project showing language icons and documents" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/72478d0a-292a-43f0-de99-711be71b852e.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Dịch thuật tài liệu kỹ thuật</h3>
+            <p class="text-gray-600 flex-grow">Tìm freelancer dịch thuật tiếng Anh sang tiếng Việt chuyên ngành kỹ thuật.</p>
+            <div class="mt-4 flex justify-between items-center text-sm text-gray-500">
+              <span><i class="fas fa-clock mr-1"></i>2 ngày trước</span>
+              <span><i class="fas fa-map-marker-alt mr-1"></i>Hà Nội</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- Testimonials Section -->
+  <section class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-extrabold text-center mb-12 text-gray-900">Khách hàng nói về chúng tôi</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="bg-white p-6 rounded-lg shadow text-center flex flex-col">
+        <img alt="Avatar of a smiling male client with short black hair" class="mx-auto rounded-full mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/6dc241cd-2953-4b46-220e-6478d48b2607.jpg" width="80"/>
+        <p class="text-gray-700 flex-grow">"Vlance giúp tôi tìm được freelancer chất lượng, dự án hoàn thành đúng tiến độ và chất lượng vượt mong đợi."</p>
+        <h3 class="mt-4 font-semibold text-blue-600">Nguyễn Văn A</h3>
+        <p class="text-sm text-gray-500">CEO Công ty ABC</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow text-center flex flex-col">
+        <img alt="Avatar of a smiling female client with long brown hair" class="mx-auto rounded-full mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/eafbef27-e90a-46d1-bc87-2eaaf384578f.jpg" width="80"/>
+        <p class="text-gray-700 flex-grow">"Giao diện website dễ sử dụng, hệ thống thanh toán an toàn, tôi rất yên tâm khi sử dụng Vlance."</p>
+        <h3 class="mt-4 font-semibold text-blue-600">Trần Thị B</h3>
+        <p class="text-sm text-gray-500">Founder Startup XYZ</p>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow text-center flex flex-col">
+        <img alt="Avatar of a smiling male client with glasses and short hair" class="mx-auto rounded-full mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/e6db93d4-74cd-4203-a8a7-e79d1718c28f.jpg" width="80"/>
+        <p class="text-gray-700 flex-grow">"Dịch vụ hỗ trợ khách hàng rất nhiệt tình, giúp tôi giải quyết mọi thắc mắc nhanh chóng."</p>
+        <h3 class="mt-4 font-semibold text-blue-600">Lê Văn C</h3>
+        <p class="text-sm text-gray-500">Nhà tuyển dụng</p>
+      </div>
+    </div>
+  </section>
+  <!-- News Section -->
+  <section class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-10 text-center">Tin tức mới nhất</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="News article image showing freelance market growth charts and graphs" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/44eb5430-a232-4865-f16b-475322397231.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Thị trường freelance Việt Nam tăng trưởng mạnh mẽ</h3>
+            <p class="text-gray-600 flex-grow">Nhu cầu thuê freelancer ngày càng tăng, mở ra nhiều cơ hội cho người làm tự do.</p>
+            <div class="mt-4 text-sm text-gray-500 flex justify-between items-center">
+              <span><i class="fas fa-calendar-alt mr-1"></i>20/06/2024</span>
+              <a class="text-blue-600 hover:underline" href="#">Xem thêm</a>
+            </div>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="News article image showing new features on Vlance platform with UI elements" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/364d301b-7e47-4e48-18ed-674e7c984f4c.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Vlance ra mắt tính năng mới giúp kết nối nhanh hơn</h3>
+            <p class="text-gray-600 flex-grow">Cập nhật hệ thống tìm kiếm và đề xuất freelancer thông minh hơn.</p>
+            <div class="mt-4 text-sm text-gray-500 flex justify-between items-center">
+              <span><i class="fas fa-calendar-alt mr-1"></i>15/06/2024</span>
+              <a class="text-blue-600 hover:underline" href="#">Xem thêm</a>
+            </div>
+          </div>
+        </article>
+        <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
+          <img alt="News article image showing freelancer success stories with happy people and awards" class="w-full h-44 object-cover" height="220" src="https://storage.googleapis.com/a1aa/image/29fef19a-1e31-468b-7eb8-a466ae2455ab.jpg" width="400"/>
+          <div class="p-4 flex flex-col flex-grow">
+            <h3 class="font-semibold text-lg text-blue-600 mb-2">Câu chuyện thành công của freelancer trên Vlance</h3>
+            <p class="text-gray-600 flex-grow">Những câu chuyện truyền cảm hứng từ các freelancer đạt được thành công lớn.</p>
+            <div class="mt-4 text-sm text-gray-500 flex justify-between items-center">
+              <span><i class="fas fa-calendar-alt mr-1"></i>10/06/2024</span>
+              <a class="text-blue-600 hover:underline" href="#">Xem thêm</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div>
+        <a class="inline-block mb-6" href="#">
+          <img alt="Vlance logo in white for footer" class="h-10 w-auto" height="40" src="images/" width="140"/>
+        </a>
+        <p class="text-sm max-w-xs">Vlance - Nền tảng kết nối Freelancer và Nhà tuyển dụng hàng đầu Việt Nam.</p>
+        <div class="flex space-x-4 mt-6 text-gray-400">
+          <a aria-label="Facebook" class="hover:text-white" href="#"><i class="fab fa-facebook fa-lg"></i></a>
+          <a aria-label="LinkedIn" class="hover:text-white" href="#"><i class="fab fa-linkedin fa-lg"></i></a>
+          <a aria-label="YouTube" class="hover:text-white" href="#"><i class="fab fa-youtube fa-lg"></i></a>
+          <a aria-label="Instagram" class="hover:text-white" href="#"><i class="fab fa-instagram fa-lg"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Về Vlance</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-white" href="#">Giới thiệu</a></li>
+          <li><a class="hover:text-white" href="#">Tuyển dụng</a></li>
+          <li><a class="hover:text-white" href="#">Điều khoản sử dụng</a></li>
+          <li><a class="hover:text-white" href="#">Chính sách bảo mật</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Hỗ trợ</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a class="hover:text-white" href="#">Trung tâm trợ giúp</a></li>
+          <li><a class="hover:text-white" href="#">Liên hệ hỗ trợ</a></li>
+          <li><a class="hover:text-white" href="#">Hướng dẫn sử dụng</a></li>
+          <li><a class="hover:text-white" href="#">Phản hồi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4">Liên hệ</h4>
+        <p class="text-sm mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Đại Học Bình Dương</p>
+        <p class="text-sm mb-2"><i class="fas fa-phone-alt mr-2"></i>000 0000 000</p>
+        <p class="text-sm mb-2"><i class="fas fa-envelope mr-2"></i>Email</p>
+        <img alt="Icons representing accepted payment methods including Visa, Mastercard, and bank transfer" class="mt-4" height="40" src="https://storage.googleapis.com/a1aa/image/4a8b20b9-ab90-4a49-e672-4df2e3b32453.jpg" width="140"/>
+      </div>
+    </div>
+    <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+      © All rights reserved
+    </div>
+  </footer>
+  <script src="js/index.js"></script>
+</body>
+</html>

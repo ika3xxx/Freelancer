@@ -1,0 +1,13 @@
+body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  #formContainer,
+  #signUpPage,
+  #logInPage {
+    min-height: 400px;
+  }
+  
+  .overlay {
+    backdrop-filter: blur(10px);
+  }
