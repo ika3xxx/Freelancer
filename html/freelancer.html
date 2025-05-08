@@ -1,0 +1,467 @@
+<html lang="vi">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   FreeHub - Danh sách Freelancer
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-indigo-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+     <a class="flex items-center space-x-2" href="#">
+      <img alt="Logo FreeHub, chữ FH cách điệu màu xanh dương và trắng" class="h-10 w-10 rounded-md" height="40" src="https://storage.googleapis.com/a1aa/image/e8bb47a6-7031-4d6e-40d9-f0c336723fe4.jpg" width="40"/>
+      <span class="text-indigo-600 font-bold text-xl select-none">
+       FreeHub
+      </span>
+     </a>
+     <nav class="hidden md:flex space-x-8 font-semibold text-gray-700">
+      <a class="hover:text-indigo-600 transition" href="../index.html">
+       Trang chủ
+      </a>
+      <a class="hover:text-indigo-600 transition" href="viec-lam.html">
+       Việc làm
+      </a>
+      <a aria-current="page" class="text-indigo-600 border-b-2 border-indigo-600 pb-1" href="#">
+       Freelancer
+      </a>
+      <a class="hover:text-indigo-600 transition" href="dang-du-an.html">
+       Đăng dự án
+      </a>
+     </nav>
+     <div class="hidden md:flex space-x-4">
+      <a class="text-indigo-600 font-semibold hover:text-indigo-800 transition border border-indigo-600 rounded-md px-4 py-1.5" href="#">
+       Đăng nhập
+      </a>
+      <a class="bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition rounded-md px-4 py-1.5" href="#">
+       Đăng ký
+      </a>
+     </div>
+     <button aria-label="Mở menu" class="md:hidden text-indigo-600 hover:text-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="mobile-menu-button">
+      <i class="fas fa-bars fa-lg">
+      </i>
+     </button>
+    </div>
+   </div>
+   <!-- Mobile menu -->
+   <nav aria-label="Menu di động" class="md:hidden bg-white border-t border-indigo-100 hidden" id="mobile-menu">
+    <a class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50" href="#">
+     Trang chủ
+    </a>
+    <a class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50" href="#">
+     Việc làm
+    </a>
+    <a aria-current="page" class="block px-4 py-3 text-indigo-600 font-semibold border-b border-indigo-100 bg-indigo-50" href="#">
+     Freelancer
+    </a>
+    <a class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50" href="#">
+     Đăng dự án
+    </a>
+    <a class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50" href="#">
+     Đăng nhập
+    </a>
+    <a class="block px-4 py-3 text-indigo-700 font-semibold hover:bg-indigo-50" href="#">
+     Đăng ký
+    </a>
+   </nav>
+  </header>
+  <!-- Nội dung chính -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+   <div class="flex flex-col gap-4">
+    <div class="mx-auto w-full max-w-4xl flex space-x-3 items-center justify-center gap-3">
+     <input id="search-input" type="text" placeholder="Tìm kiếm freelancer..." class="flex-grow border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 h-10" autocomplete="off" aria-label="Tìm kiếm freelancer"/>
+     <select id="field-select" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 h-10 w-40" aria-label="Lĩnh vực">
+      <option value="">Tất cả lĩnh vực</option>
+      <option value="Lập trình">Lập trình</option>
+      <option value="Thiết kế">Thiết kế</option>
+      <option value="Viết lách">Viết lách</option>
+      <option value="Marketing">Marketing</option>
+      <option value="SEO">SEO</option>
+     </select>
+     <select id="skills-select" class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 h-10 w-40" aria-label="Kỹ năng">
+      <option value="">Tất cả kỹ năng</option>
+      <option value="React.js">React.js</option>
+      <option value="JavaScript">JavaScript</option>
+      <option value="Flutter">Flutter</option>
+      <option value="SEO">SEO</option>
+      <option value="Marketing">Marketing</option>
+      <option value="Thiết kế">Thiết kế</option>
+      <option value="Viết lách">Viết lách</option>
+     </select>
+     <button id="search-button" class="bg-indigo-600 text-white font-semibold rounded-md px-4 py-2 hover:bg-indigo-700 transition h-10 min-w-[110px]" aria-label="Tìm kiếm freelancer">
+      Tìm kiếm
+     </button>
+    </div>
+    <h1 class="text-4xl font-bold text-indigo-700 mb-8 text-center">
+     Danh sách Freelancer
+    </h1>
+    <!-- Danh sách freelancer -->
+    <section class="flex-grow" aria-live="polite" aria-atomic="true" aria-relevant="additions removals" aria-label="Danh sách freelancer">
+     <div id="freelancers-list" class="space-y-6">
+      <p class="text-center text-gray-600">Đang tải freelancer...</p>
+     </div>
+     <!-- Phân trang -->
+     <nav aria-label="Phân trang" class="mt-10 flex justify-center space-x-2" id="pagination" role="navigation" aria-live="polite" aria-atomic="true">
+     </nav>
+    </section>
+   </div>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-indigo-200 mt-auto">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+     <a class="flex items-center space-x-2 mb-4" href="#">
+      <img alt="Logo FreeHub, chữ FH cách điệu màu xanh dương và trắng" class="h-10 w-10 rounded-md" height="40" src="https://storage.googleapis.com/a1aa/image/e8bb47a6-7031-4d6e-40d9-f0c336723fe4.jpg" width="40"/>
+      <span class="text-indigo-600 font-bold text-xl select-none">
+       FreeHub
+      </span>
+     </a>
+     <p class="text-gray-600 max-w-xs">
+      Kết nối freelancer và khách hàng dễ dàng, nhanh chóng và hiệu quả.
+     </p>
+    </div>
+    <div>
+     <h3 class="text-indigo-700 font-semibold mb-4">
+      Điều hướng
+     </h3>
+     <ul class="space-y-2 text-gray-700">
+      <li>
+       <a class="hover:text-indigo-600 transition" href="#">
+        Trang chủ
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="#">
+        Việc làm
+       </a>
+      </li>
+      <li>
+       <a aria-current="page" class="text-indigo-600" href="#">
+        Freelancer
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="#">
+        Đăng dự án
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="#">
+        Đăng nhập/Đăng ký
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="text-indigo-700 font-semibold mb-4">
+      Liên hệ
+     </h3>
+     <address class="not-italic text-gray-700 space-y-2">
+      <p>
+       <i class="fas fa-map-marker-alt mr-2 text-indigo-600">
+       </i>
+       123 Đường Freelance, Quận 1, TP.HCM
+      </p>
+      <p>
+       <i class="fas fa-phone mr-2 text-indigo-600">
+       </i>
+       +84 123 456 789
+      </p>
+      <p>
+       <i class="fas fa-envelope mr-2 text-indigo-600">
+       </i>
+       support@freehub.vn
+      </p>
+     </address>
+     <div class="flex space-x-4 mt-4 text-indigo-600">
+      <a aria-label="Facebook" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-facebook fa-lg">
+       </i>
+      </a>
+      <a aria-label="Twitter" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-twitter fa-lg">
+       </i>
+      </a>
+      <a aria-label="LinkedIn" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-linkedin fa-lg">
+       </i>
+      </a>
+      <a aria-label="Instagram" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-instagram fa-lg">
+       </i>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="border-t border-indigo-200 text-center text-gray-500 py-4 text-sm">
+    © 2024 FreeHub. Bản quyền thuộc về FreeHub.
+   </div>
+  </footer>
+   <script>
+   const mobileMenuButton = document.getElementById('mobile-menu-button');
+   const mobileMenu = document.getElementById('mobile-menu');
+
+   mobileMenuButton.addEventListener('click', () => {
+     mobileMenu.classList.toggle('hidden');
+   });
+
+   // Dữ liệu demo freelancer
+   const freelancersData = [
+     {
+       id: 1,
+       name: "Nguyễn Anh Tuấn",
+       avatar: "https://storage.googleapis.com/a1aa/image/a2f93e43-b894-4762-ef63-6d3e6579d162.jpg",
+       title: "Lập trình viên React.js",
+       field: "Lập trình",
+       skills: ["React.js", "JavaScript", "Frontend"],
+       priceMin: 20,
+       priceMax: 30,
+       priceType: "hourly",
+       rating: 4.7,
+       description: "Kinh nghiệm 5 năm phát triển ứng dụng web với React.js, chuyên về frontend.",
+       url: "#"
+     },
+     {
+       id: 2,
+       name: "Lê Thị Hoa",
+       avatar: "https://storage.googleapis.com/a1aa/image/062484e7-0a23-4170-326c-574b88a26489.jpg",
+       title: "Designer đồ họa",
+       field: "Thiết kế",
+       skills: ["Thiết kế", "Logo", "Branding"],
+       priceMin: 35,
+       priceMax: 50,
+       priceType: "hourly",
+       rating: 5.0,
+       description: "Chuyên thiết kế logo và bộ nhận diện thương hiệu cho các startup và doanh nghiệp.",
+       url: "#"
+     },
+     {
+       id: 3,
+       name: "Phạm Văn Long",
+       avatar: "https://storage.googleapis.com/a1aa/image/595a24a5-f1eb-4f72-8454-f766ed1ac9b6.jpg",
+       title: "Content Writer",
+       field: "Viết lách",
+       skills: ["Viết lách", "Blog", "SEO"],
+       priceMin: 25,
+       priceMax: 40,
+       priceType: "hourly",
+       rating: 3.8,
+       description: "Viết bài blog chuyên sâu về công nghệ và SEO, giúp tăng traffic hiệu quả.",
+       url: "#"
+     },
+     {
+       id: 4,
+       name: "Trần Thị Mai",
+       avatar: "https://storage.googleapis.com/a1aa/image/f7bc352e-68b0-4197-a914-00dd5ebb09f4.jpg",
+       title: "Chuyên gia Marketing Digital",
+       field: "Marketing",
+       skills: ["Marketing", "SEO", "Growth"],
+       priceMin: 30,
+       priceMax: 45,
+       priceType: "hourly",
+       rating: 4.2,
+       description: "Tư vấn và triển khai chiến lược marketing digital giúp tăng trưởng doanh thu.",
+       url: "#"
+     },
+     {
+       id: 5,
+       name: "Hoàng Minh Anh",
+       avatar: "https://storage.googleapis.com/a1aa/image/da3b9042-94d0-4d60-ed68-4653f2b05109.jpg",
+       title: "Lập trình viên Mobile",
+       field: "Lập trình",
+       skills: ["Flutter", "Dart", "Mobile"],
+       priceMin: 28,
+       priceMax: 40,
+       priceType: "hourly",
+       rating: 3.9,
+       description: "Phát triển ứng dụng di động đa nền tảng với Flutter, tối ưu hiệu năng và UI.",
+       url: "#"
+     },
+     {
+       id: 6,
+       name: "Nguyễn Thị Lan",
+       avatar: "https://storage.googleapis.com/a1aa/image/b21369b2-9659-40c6-6189-ee4dda160bbe.jpg",
+       title: "Chuyên gia SEO",
+       field: "SEO",
+       skills: ["SEO", "Content", "Marketing"],
+       priceMin: 30,
+       priceMax: 50,
+       priceType: "hourly",
+       rating: 4.8,
+       description: "Tối ưu SEO website, tăng thứ hạng tìm kiếm và cải thiện nội dung marketing.",
+       url: "#"
+     }
+   ];
+
+   const freelancersList = document.getElementById('freelancers-list');
+   const pagination = document.getElementById('pagination');
+
+   const ITEMS_PER_PAGE = 3;
+   let currentPage = 1;
+   let filteredFreelancers = [...freelancersData];
+
+   function renderFreelancers(freelancers, page = 1) {
+     if (freelancers.length === 0) {
+       freelancersList.innerHTML = '<p class="text-center text-gray-600">Không tìm thấy freelancer phù hợp.</p>';
+       pagination.innerHTML = '';
+       return;
+     }
+     const start = (page - 1) * ITEMS_PER_PAGE;
+     const end = start + ITEMS_PER_PAGE;
+     const pageFreelancers = freelancers.slice(start, end);
+
+     freelancersList.innerHTML = pageFreelancers.map(f => {
+       const skillsHtml = f.skills.map(skill => `<span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded">${skill}</span>`).join(' ');
+       const priceText = f.priceType === "hourly" ? `Giá: $${f.priceMin} - $${f.priceMax} / giờ` : `Giá: $${f.priceMin} - $${f.priceMax}`;
+       const starsFull = Math.floor(f.rating);
+       const halfStar = f.rating - starsFull >= 0.5;
+       const starsEmpty = 5 - starsFull - (halfStar ? 1 : 0);
+       const starsHtml = `
+         ${'<i class="fas fa-star"></i>'.repeat(starsFull)}
+         ${halfStar ? '<i class="fas fa-star-half-alt"></i>' : ''}
+         ${'<i class="far fa-star"></i>'.repeat(starsEmpty)}
+       `;
+       return `
+         <article class="bg-white rounded-lg shadow p-6 flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 hover:shadow-lg transition">
+           <img alt="Ảnh đại diện của ${f.name}, freelancer lĩnh vực ${f.field}, kỹ năng ${f.skills.join(', ')}" class="w-28 h-28 rounded-full object-cover flex-shrink-0" height="112" src="${f.avatar}" width="112"/>
+           <div class="flex-grow text-center sm:text-left">
+             <h3 class="text-2xl font-semibold text-indigo-800 mb-1">${f.name}</h3>
+             <p class="text-indigo-600 font-medium mb-2">${f.title}</p>
+             <div class="flex flex-wrap gap-2 mb-2 justify-center sm:justify-start">${skillsHtml}</div>
+             <div class="flex items-center justify-center sm:justify-start space-x-2 text-yellow-400 mb-2" aria-label="Đánh giá ${f.rating} sao">
+               ${starsHtml}
+               <span class="text-gray-600 text-sm">(${f.rating.toFixed(1)})</span>
+             </div>
+             <p class="text-gray-700 mb-2 line-clamp-3">${f.description}</p>
+             <div class="text-indigo-600 font-semibold">${priceText}</div>
+           </div>
+           <div class="flex-shrink-0">
+             <a href="${f.url}" class="inline-block mt-2 sm:mt-0 bg-indigo-600 text-white font-semibold rounded-md px-6 py-2 hover:bg-indigo-700 transition" aria-label="Xem hồ sơ freelancer ${f.name}">
+               Xem hồ sơ
+             </a>
+           </div>
+         </article>
+       `;
+     }).join('');
+
+     renderPagination(freelancers.length, page);
+   }
+
+   function renderPagination(totalItems, currentPage) {
+     const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+     if (totalPages <= 1) {
+       pagination.innerHTML = '';
+       return;
+     }
+     let html = '';
+
+     // Previous button
+     html += `<button aria-label="Trang trước" class="px-3 py-1 rounded-md border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition" ${currentPage === 1 ? 'disabled' : ''} type="button" data-page="${currentPage - 1}">
+       <i class="fas fa-chevron-left"></i>
+     </button>`;
+
+     // Page numbers (show max 5 pages with current in center)
+     let startPage = Math.max(1, currentPage - 2);
+     let endPage = Math.min(totalPages, currentPage + 2);
+     if (currentPage <= 2) {
+       endPage = Math.min(5, totalPages);
+     }
+     if (currentPage >= totalPages - 1) {
+       startPage = Math.max(1, totalPages - 4);
+     }
+
+     for (let i = startPage; i <= endPage; i++) {
+       html += `<button class="px-3 py-1 rounded-md ${i === currentPage ? 'bg-indigo-600 text-white font-semibold' : 'border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition'}" type="button" data-page="${i}">${i}</button>`;
+     }
+
+     // Next button
+     html += `<button aria-label="Trang tiếp theo" class="px-3 py-1 rounded-md border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition" ${currentPage === totalPages ? 'disabled' : ''} type="button" data-page="${currentPage + 1}">
+       <i class="fas fa-chevron-right"></i>
+     </button>`;
+
+     pagination.innerHTML = html;
+   }
+
+   pagination.addEventListener('click', e => {
+     if (e.target.tagName === 'BUTTON') {
+       const page = Number(e.target.getAttribute('data-page'));
+       if (!isNaN(page) && page >= 1 && page <= Math.ceil(filteredFreelancers.length / ITEMS_PER_PAGE)) {
+         currentPage = page;
+         renderFreelancers(filteredFreelancers, currentPage);
+         window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
+     }
+   });
+
+   function normalizeString(str) {
+     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+   }
+
+   // New keyword and field search filtering
+   const searchInput = document.getElementById('search-input');
+   const fieldSelect = document.getElementById('field-select');
+   const skillsSelect = document.getElementById('skills-select');
+   const searchButton = document.getElementById('search-button');
+
+   function applyFilters() {
+     const keywordRaw = searchInput.value.trim();
+     const keyword = normalizeString(keywordRaw);
+     const selectedField = fieldSelect.value;
+     const selectedSkill = skillsSelect.value;
+
+     filteredFreelancers = freelancersData.filter(f => {
+       // Filter by field if selected
+       if (selectedField && f.field !== selectedField) {
+         return false;
+       }
+       // Filter by skill if selected
+       if (selectedSkill && !f.skills.includes(selectedSkill)) {
+         return false;
+       }
+       if (!keyword) return true;
+       const name = normalizeString(f.name);
+       const title = normalizeString(f.title);
+       const description = normalizeString(f.description);
+       return name.includes(keyword) || title.includes(keyword) || description.includes(keyword);
+     });
+
+     currentPage = 1;
+     renderFreelancers(filteredFreelancers, currentPage);
+   }
+
+   searchButton.addEventListener('click', () => {
+     applyFilters();
+   });
+
+   searchInput.addEventListener('keydown', (e) => {
+     if (e.key === 'Enter') {
+       e.preventDefault();
+       applyFilters();
+     }
+   });
+
+   fieldSelect.addEventListener('change', () => {
+     applyFilters();
+   });
+
+   skillsSelect.addEventListener('change', () => {
+     applyFilters();
+   });
+
+   // Initial render
+   renderFreelancers(freelancersData, 1);
+  </script>
+ </body>
+</html>
