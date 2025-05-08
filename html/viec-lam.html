@@ -1,0 +1,757 @@
+<html lang="vi">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   FreeHub - Danh sách việc làm
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-indigo-50 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+     <a class="flex items-center space-x-2" href="#">
+      <img alt="Logo FreeHub, chữ FH cách điệu màu xanh dương và trắng" class="h-10 w-10 rounded-md" height="40" src="https://storage.googleapis.com/a1aa/image/e8bb47a6-7031-4d6e-40d9-f0c336723fe4.jpg" width="40"/>
+      <span class="text-indigo-600 font-bold text-xl select-none">
+       FreeHub
+      </span>
+     </a>
+     <nav class="hidden md:flex space-x-8 font-semibold text-gray-700">
+      <a class="hover:text-indigo-600 transition" href="../index.html">
+       Trang chủ
+      </a>
+      <a aria-current="page" class="text-indigo-600 border-b-2 border-indigo-600 pb-1" href="#">
+       Việc làm
+      </a>
+      <a class="hover:text-indigo-600 transition" href="freelancer.html">
+       Freelancer
+      </a>
+      <a class="hover:text-indigo-600 transition" href="dang-du-an.html">
+       Đăng dự án
+      </a>
+     </nav>
+     <div class="hidden md:flex space-x-4">
+      <button id="login-button" class="text-indigo-600 font-semibold hover:text-indigo-800 transition border border-indigo-600 rounded-md px-4 py-1.5 flex items-center space-x-1 focus:outline-none focus:ring-2 focus:ring-indigo-600" type="button">
+       <i class="fas fa-sign-in-alt"></i>
+       <span>Đăng nhập</span>
+      </button>
+      <button id="register-button" class="bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition rounded-md px-4 py-1.5 flex items-center space-x-1 focus:outline-none focus:ring-2 focus:ring-indigo-600" type="button">
+       <i class="fas fa-user-plus"></i>
+       <span>Đăng ký</span>
+      </button>
+     </div>
+     <button aria-label="Mở menu" class="md:hidden text-indigo-600 hover:text-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="mobile-menu-button">
+      <i class="fas fa-bars fa-lg"></i>
+     </button>
+    </div>
+   </div>
+   <!-- Mobile menu -->
+   <nav aria-label="Menu di động" class="md:hidden bg-white border-t border-indigo-100 hidden" id="mobile-menu">
+    <a class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50" href="../index.html">
+     Trang chủ
+    </a>
+    <a aria-current="page" class="block px-4 py-3 text-indigo-600 font-semibold border-b border-indigo-100 bg-indigo-50" href="#">
+     Việc làm
+    </a>
+    <a class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50" href="freelancer.html">
+     Freelancer
+    </a>
+    <a class="block px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50" href="dang-du-an.html">
+     Đăng dự án
+    </a>
+    <button id="mobile-login-button" class="w-full text-left px-4 py-3 text-indigo-700 font-semibold border-b border-indigo-100 hover:bg-indigo-50 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" type="button">
+     <i class="fas fa-sign-in-alt"></i>
+     <span>Đăng nhập</span>
+    </button>
+    <button id="mobile-register-button" class="w-full text-left px-4 py-3 text-indigo-700 font-semibold hover:bg-indigo-50 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-indigo-600" type="button">
+     <i class="fas fa-user-plus"></i>
+     <span>Đăng ký</span>
+    </button>
+   </nav>
+  </header>
+  <!-- Nội dung chính -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+   <h1 class="text-4xl font-bold text-indigo-700 mb-8 text-center">
+    Danh sách việc làm
+   </h1>
+   <div class="flex flex-col lg:flex-row gap-8">
+    <!-- Bộ lọc -->
+    <aside class="w-full lg:w-72 bg-white rounded-lg shadow p-6 sticky top-24 self-start h-max">
+     <h2 class="text-xl font-semibold text-indigo-700 mb-6 flex items-center justify-between">
+      Bộ lọc tìm kiếm
+      <button aria-label="Xóa bộ lọc" class="text-indigo-600 hover:text-indigo-800 font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-indigo-600 rounded px-2 py-1" id="clear-filters-btn" type="button">
+       Xóa bộ lọc
+      </button>
+     </h2>
+     <form class="space-y-6" id="filter-form" onsubmit="event.preventDefault()">
+      <!-- Từ khóa -->
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2" for="keyword">
+        Từ khóa
+       </label>
+       <input class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="keyword" name="keyword" placeholder="Nhập từ khóa..." type="text" autocomplete="off"/>
+      </div>
+      <!-- Ngành nghề -->
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2" for="category">
+        Ngành nghề
+       </label>
+       <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="category" name="category" multiple size="5" aria-multiselectable="true">
+        <option value="Lập trình">
+         Lập trình
+        </option>
+        <option value="Thiết kế">
+         Thiết kế
+        </option>
+        <option value="Viết lách">
+         Viết lách
+        </option>
+        <option value="Marketing">
+         Marketing
+        </option>
+        <option value="SEO">
+         SEO
+        </option>
+       </select>
+       <p class="text-xs text-gray-400 mt-1">Giữ Ctrl (Cmd) để chọn nhiều</p>
+      </div>
+      <!-- Kỹ năng -->
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2" for="skills">
+        Kỹ năng
+       </label>
+       <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="skills" name="skills" multiple size="5" aria-multiselectable="true">
+        <option value="React.js">
+         React.js
+        </option>
+        <option value="JavaScript">
+         JavaScript
+        </option>
+        <option value="Flutter">
+         Flutter
+        </option>
+        <option value="SEO">
+         SEO
+        </option>
+        <option value="Marketing">
+         Marketing
+        </option>
+        <option value="Thiết kế">
+         Thiết kế
+        </option>
+        <option value="Viết lách">
+         Viết lách
+        </option>
+       </select>
+       <p class="text-xs text-gray-400 mt-1">Giữ Ctrl (Cmd) để chọn nhiều</p>
+      </div>
+      <!-- Mức giá -->
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2" for="price-range">
+        Mức giá (USD)
+       </label>
+       <div class="flex space-x-2">
+        <input aria-label="Giá tối thiểu" class="w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="price-min" min="0" name="price-min" placeholder="Tối thiểu" type="number" inputmode="numeric" pattern="[0-9]*"/>
+        <input aria-label="Giá tối đa" class="w-1/2 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="price-max" min="0" name="price-max" placeholder="Tối đa" type="number" inputmode="numeric" pattern="[0-9]*"/>
+       </div>
+      </div>
+      <!-- Loại giá -->
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2">
+        Loại giá
+       </label>
+       <div class="flex flex-col space-y-1">
+        <label class="inline-flex items-center">
+         <input checked="" class="form-checkbox text-indigo-600" name="price-type" type="checkbox" value="hourly"/>
+         <span class="ml-2 text-gray-700">
+          Theo giờ
+         </span>
+        </label>
+        <label class="inline-flex items-center">
+         <input checked="" class="form-checkbox text-indigo-600" name="price-type" type="checkbox" value="fixed"/>
+         <span class="ml-2 text-gray-700">
+          Theo dự án
+         </span>
+        </label>
+       </div>
+      </div>
+      <!-- Đánh giá tối thiểu -->
+      <div>
+       <label class="block text-gray-700 font-semibold mb-2" for="rating-min">
+        Đánh giá tối thiểu
+       </label>
+       <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="rating-min" name="rating-min">
+        <option value="0">
+         Không yêu cầu
+        </option>
+        <option value="1">
+         1 sao trở lên
+        </option>
+        <option value="2">
+         2 sao trở lên
+        </option>
+        <option value="3">
+         3 sao trở lên
+        </option>
+        <option value="4">
+         4 sao trở lên
+        </option>
+        <option value="5">
+         5 sao
+        </option>
+       </select>
+      </div>
+      <button class="w-full bg-indigo-600 text-white font-semibold rounded-md px-4 py-2 hover:bg-indigo-700 transition" type="submit" aria-label="Lọc việc làm">
+       Lọc việc làm
+      </button>
+     </form>
+    </aside>
+    <!-- Danh sách việc làm -->
+    <section class="flex-grow" aria-live="polite" aria-atomic="true" aria-relevant="additions removals" aria-label="Danh sách việc làm">
+     <div id="jobs-list" class="space-y-6">
+      <p class="text-center text-gray-600">Đang tải việc làm...</p>
+     </div>
+     <!-- Phân trang -->
+     <nav aria-label="Phân trang" class="mt-10 flex justify-center space-x-2" id="pagination" role="navigation" aria-live="polite" aria-atomic="true">
+     </nav>
+    </section>
+   </div>
+  </main>
+  <!-- Modal đăng nhập -->
+  <div aria-hidden="true" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="login-modal">
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full mx-4 sm:mx-0 p-6 relative">
+    <button aria-label="Đóng cửa sổ đăng nhập" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none" id="login-modal-close" type="button">
+     <i class="fas fa-times fa-lg"></i>
+    </button>
+    <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center">
+     Đăng nhập FreeHub
+    </h2>
+    <form id="login-form" class="space-y-5" novalidate>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="email">
+       Email
+      </label>
+      <input autocomplete="email" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" id="email" name="email" placeholder="email@example.com" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="password">
+       Mật khẩu
+      </label>
+      <input autocomplete="current-password" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+     </div>
+     <div class="flex items-center justify-between">
+      <label class="inline-flex items-center text-gray-700">
+       <input class="form-checkbox h-4 w-4 text-indigo-600" type="checkbox" name="remember" id="remember"/>
+       <span class="ml-2 text-sm">Ghi nhớ đăng nhập</span>
+      </label>
+      <a class="text-indigo-600 hover:underline text-sm" href="#">
+       Quên mật khẩu?
+      </a>
+     </div>
+     <button class="w-full bg-indigo-600 text-white font-semibold rounded-md px-4 py-2 hover:bg-indigo-700 transition" type="submit">
+      Đăng nhập
+     </button>
+    </form>
+   </div>
+  </div>
+  <!-- Modal đăng ký -->
+  <div aria-hidden="true" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" id="register-modal">
+   <div class="bg-white rounded-lg shadow-lg max-w-md w-full mx-4 sm:mx-0 p-6 relative">
+    <button aria-label="Đóng cửa sổ đăng ký" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 focus:outline-none" id="register-modal-close" type="button">
+     <i class="fas fa-times fa-lg"></i>
+    </button>
+    <h2 class="text-2xl font-bold text-indigo-700 mb-6 text-center">
+     Đăng ký tài khoản FreeHub
+    </h2>
+    <form id="register-form" class="space-y-5" novalidate>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="reg-name">
+       Họ và tên
+      </label>
+      <input autocomplete="name" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" id="reg-name" name="name" placeholder="Nguyễn Văn A" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="reg-email">
+       Email
+      </label>
+      <input autocomplete="email" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" id="reg-email" name="email" placeholder="email@example.com" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="reg-password">
+       Mật khẩu
+      </label>
+      <input autocomplete="new-password" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" id="reg-password" name="password" placeholder="••••••••" required="" type="password"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-1" for="reg-password-confirm">
+       Xác nhận mật khẩu
+      </label>
+      <input autocomplete="new-password" class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600" id="reg-password-confirm" name="passwordConfirm" placeholder="••••••••" required="" type="password"/>
+     </div>
+     <button class="w-full bg-indigo-600 text-white font-semibold rounded-md px-4 py-2 hover:bg-indigo-700 transition" type="submit">
+      Đăng ký
+     </button>
+    </form>
+   </div>
+  </div>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-indigo-200 mt-auto">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+     <a class="flex items-center space-x-2 mb-4" href="../index.html">
+      <img alt="Logo FreeHub, chữ FH cách điệu màu xanh dương và trắng" class="h-10 w-10 rounded-md" height="40" src="https://storage.googleapis.com/a1aa/image/e8bb47a6-7031-4d6e-40d9-f0c336723fe4.jpg" width="40"/>
+      <span class="text-indigo-600 font-bold text-xl select-none">
+       FreeHub
+      </span>
+     </a>
+     <p class="text-gray-600 max-w-xs">
+      Kết nối freelancer và khách hàng dễ dàng, nhanh chóng và hiệu quả.
+     </p>
+    </div>
+    <div>
+     <h3 class="text-indigo-700 font-semibold mb-4">
+      Điều hướng
+     </h3>
+     <ul class="space-y-2 text-gray-700">
+      <li>
+       <a class="hover:text-indigo-600 transition" href="../index.html">
+        Trang chủ
+       </a>
+      </li>
+      <li>
+       <a aria-current="page" class="text-indigo-600" href="#">
+        Việc làm
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="freelancer.html">
+        Freelancer
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="dang-du-an.html">
+        Đăng dự án
+       </a>
+      </li>
+      <li>
+       <a class="hover:text-indigo-600 transition" href="#">
+        Đăng nhập/Đăng ký
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="text-indigo-700 font-semibold mb-4">
+      Liên hệ
+     </h3>
+     <address class="not-italic text-gray-700 space-y-2">
+      <p>
+       <i class="fas fa-map-marker-alt mr-2 text-indigo-600"></i>
+       123 Đường Freelance, Quận 1, TP.HCM
+      </p>
+      <p>
+       <i class="fas fa-phone mr-2 text-indigo-600"></i>
+       +84 123 456 789
+      </p>
+      <p>
+       <i class="fas fa-envelope mr-2 text-indigo-600"></i>
+       support@freehub.vn
+      </p>
+     </address>
+     <div class="flex space-x-4 mt-4 text-indigo-600">
+      <a aria-label="Facebook" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      <a aria-label="Twitter" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-twitter fa-lg"></i>
+      </a>
+      <a aria-label="LinkedIn" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-linkedin fa-lg"></i>
+      </a>
+      <a aria-label="Instagram" class="hover:text-indigo-800 transition" href="#">
+       <i class="fab fa-instagram fa-lg"></i>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="border-t border-indigo-200 text-center text-gray-500 py-4 text-sm">
+    © 2024 FreeHub. Bản quyền thuộc về FreeHub.
+   </div>
+  </footer>
+  <script>
+   const mobileMenuButton = document.getElementById('mobile-menu-button');
+   const mobileMenu = document.getElementById('mobile-menu');
+   const loginButton = document.getElementById('login-button');
+   const mobileLoginButton = document.getElementById('mobile-login-button');
+   const registerButton = document.getElementById('register-button');
+   const mobileRegisterButton = document.getElementById('mobile-register-button');
+   const loginModal = document.getElementById('login-modal');
+   const registerModal = document.getElementById('register-modal');
+   const loginModalClose = document.getElementById('login-modal-close');
+   const registerModalClose = document.getElementById('register-modal-close');
+   const loginForm = document.getElementById('login-form');
+   const registerForm = document.getElementById('register-form');
+
+   mobileMenuButton.addEventListener('click', () => {
+     mobileMenu.classList.toggle('hidden');
+   });
+
+   function openLoginModal() {
+     loginModal.classList.remove('hidden');
+     loginModal.setAttribute('aria-hidden', 'false');
+     document.body.style.overflow = 'hidden';
+     document.getElementById('email').focus();
+   }
+
+   function closeLoginModal() {
+     loginModal.classList.add('hidden');
+     loginModal.setAttribute('aria-hidden', 'true');
+     document.body.style.overflow = '';
+   }
+
+   function openRegisterModal() {
+     registerModal.classList.remove('hidden');
+     registerModal.setAttribute('aria-hidden', 'false');
+     document.body.style.overflow = 'hidden';
+     document.getElementById('reg-name').focus();
+   }
+
+   function closeRegisterModal() {
+     registerModal.classList.add('hidden');
+     registerModal.setAttribute('aria-hidden', 'true');
+     document.body.style.overflow = '';
+   }
+
+   loginButton.addEventListener('click', openLoginModal);
+   mobileLoginButton.addEventListener('click', () => {
+     mobileMenu.classList.add('hidden');
+     openLoginModal();
+   });
+   loginModalClose.addEventListener('click', closeLoginModal);
+
+   registerButton.addEventListener('click', openRegisterModal);
+   mobileRegisterButton.addEventListener('click', () => {
+     mobileMenu.classList.add('hidden');
+     openRegisterModal();
+   });
+   registerModalClose.addEventListener('click', closeRegisterModal);
+
+   loginModal.addEventListener('click', (e) => {
+     if (e.target === loginModal) {
+       closeLoginModal();
+     }
+   });
+
+   registerModal.addEventListener('click', (e) => {
+     if (e.target === registerModal) {
+       closeRegisterModal();
+     }
+   });
+
+   loginForm.addEventListener('submit', (e) => {
+     e.preventDefault();
+     const email = loginForm.email.value.trim();
+     const password = loginForm.password.value.trim();
+     if (!email || !password) {
+       alert('Vui lòng nhập đầy đủ email và mật khẩu.');
+       return;
+     }
+     alert(`Đăng nhập thành công với email: ${email}`);
+     closeLoginModal();
+     loginForm.reset();
+   });
+
+   registerForm.addEventListener('submit', (e) => {
+     e.preventDefault();
+     const name = registerForm.name.value.trim();
+     const email = registerForm.email.value.trim();
+     const password = registerForm.password.value.trim();
+     const passwordConfirm = registerForm.passwordConfirm.value.trim();
+     if (!name || !email || !password || !passwordConfirm) {
+       alert('Vui lòng nhập đầy đủ thông tin.');
+       return;
+     }
+     if (password !== passwordConfirm) {
+       alert('Mật khẩu xác nhận không khớp.');
+       return;
+     }
+     alert(`Đăng ký thành công cho tài khoản: ${name} (${email})`);
+     closeRegisterModal();
+     registerForm.reset();
+   });
+
+   document.addEventListener('keydown', (e) => {
+     if (e.key === 'Escape') {
+       if (!loginModal.classList.contains('hidden')) {
+         closeLoginModal();
+       }
+       if (!registerModal.classList.contains('hidden')) {
+         closeRegisterModal();
+       }
+     }
+   });
+
+   // Dữ liệu demo việc làm có thêm category (ngành nghề)
+   const jobsData = [
+     {
+       id: 1,
+       title: "Lập trình viên React.js",
+       description: "Tìm freelancer có kinh nghiệm React.js để phát triển giao diện người dùng cho ứng dụng web.",
+       category: "Lập trình",
+       skills: ["React.js", "JavaScript", "Frontend"],
+       priceMin: 20,
+       priceMax: 30,
+       priceType: "hourly",
+       rating: 4.7,
+       url: "#"
+     },
+     {
+       id: 2,
+       title: "Thiết kế logo thương hiệu",
+       description: "Cần freelancer thiết kế logo chuyên nghiệp cho startup công nghệ mới.",
+       category: "Thiết kế",
+       skills: ["Thiết kế", "Logo", "Branding"],
+       priceMin: 150,
+       priceMax: 300,
+       priceType: "fixed",
+       rating: 5.0,
+       url: "#"
+     },
+     {
+       id: 3,
+       title: "Viết bài blog công nghệ",
+       description: "Tìm freelancer viết bài blog chuyên sâu về công nghệ, AI và lập trình.",
+       category: "Viết lách",
+       skills: ["Viết lách", "Blog", "Công nghệ"],
+       priceMin: 50,
+       priceMax: 50,
+       priceType: "fixed",
+       rating: 3.8,
+       url: "#"
+     },
+     {
+       id: 4,
+       title: "Marketing Digital cho startup",
+       description: "Cần chuyên gia marketing digital để xây dựng chiến lược quảng cáo và tăng trưởng khách hàng.",
+       category: "Marketing",
+       skills: ["Marketing", "Digital", "Growth"],
+       priceMin: 25,
+       priceMax: 40,
+       priceType: "hourly",
+       rating: 4.2,
+       url: "#"
+     },
+     {
+       id: 5,
+       title: "Phát triển ứng dụng mobile Flutter",
+       description: "Freelancer có kinh nghiệm Flutter để phát triển ứng dụng đa nền tảng cho dự án startup.",
+       category: "Lập trình",
+       skills: ["Flutter", "Mobile", "Dart"],
+       priceMin: 30,
+       priceMax: 45,
+       priceType: "hourly",
+       rating: 3.9,
+       url: "#"
+     },
+     {
+       id: 6,
+       title: "Tư vấn SEO & Content Marketing",
+       description: "Freelancer chuyên SEO giúp tăng thứ hạng website và tối ưu nội dung marketing.",
+       category: "SEO",
+       skills: ["SEO", "Content", "Marketing"],
+       priceMin: 100,
+       priceMax: 200,
+       priceType: "fixed",
+       rating: 4.8,
+       url: "#"
+     }
+   ];
+
+   const jobsList = document.getElementById('jobs-list');
+   const filterForm = document.getElementById('filter-form');
+   const pagination = document.getElementById('pagination');
+   const clearFiltersBtn = document.getElementById('clear-filters-btn');
+
+   const ITEMS_PER_PAGE = 3;
+   let currentPage = 1;
+   let filteredJobs = [...jobsData];
+
+   function renderJobs(jobs, page = 1) {
+     if (jobs.length === 0) {
+       jobsList.innerHTML = '<p class="text-center text-gray-600">Không tìm thấy việc làm phù hợp.</p>';
+       pagination.innerHTML = '';
+       return;
+     }
+     const start = (page - 1) * ITEMS_PER_PAGE;
+     const end = start + ITEMS_PER_PAGE;
+     const pageJobs = jobs.slice(start, end);
+
+     jobsList.innerHTML = pageJobs.map(job => {
+       const skillsHtml = [
+         `<span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded">${job.category}</span>`,
+         ...job.skills.map(skill => `<span class="bg-indigo-100 text-indigo-700 text-xs font-semibold px-2.5 py-0.5 rounded">${skill}</span>`)
+       ].join(' ');
+       const priceText = job.priceType === "hourly" ? `Giá: $${job.priceMin} - $${job.priceMax} / giờ` : `Giá: $${job.priceMin} - $${job.priceMax}`;
+       return `
+         <article class="bg-white rounded-lg shadow p-6 flex flex-col justify-between hover:shadow-lg transition">
+           <div>
+             <h3 class="text-xl font-semibold text-indigo-800 mb-2">${job.title}</h3>
+             <p class="text-gray-600 mb-3 line-clamp-3">${job.description}</p>
+             <div class="flex flex-wrap gap-2 mb-3">${skillsHtml}</div>
+           </div>
+           <div class="flex justify-between items-center text-indigo-600 font-semibold">
+             <span>${priceText}</span>
+             <a class="hover:underline" href="${job.url}">Xem chi tiết</a>
+           </div>
+         </article>
+       `;
+     }).join('');
+
+     renderPagination(jobs.length, page);
+   }
+
+   function renderPagination(totalItems, currentPage) {
+     const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+     if (totalPages <= 1) {
+       pagination.innerHTML = '';
+       return;
+     }
+     let html = '';
+
+     // Previous button
+     html += `<button aria-label="Trang trước" class="px-3 py-1 rounded-md border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition" ${currentPage === 1 ? 'disabled' : ''} type="button" data-page="${currentPage - 1}">
+       <i class="fas fa-chevron-left"></i>
+     </button>`;
+
+     // Page numbers (show max 5 pages with current in center)
+     let startPage = Math.max(1, currentPage - 2);
+     let endPage = Math.min(totalPages, currentPage + 2);
+     if (currentPage <= 2) {
+       endPage = Math.min(5, totalPages);
+     }
+     if (currentPage >= totalPages - 1) {
+       startPage = Math.max(1, totalPages - 4);
+     }
+
+     for (let i = startPage; i <= endPage; i++) {
+       html += `<button class="px-3 py-1 rounded-md ${i === currentPage ? 'bg-indigo-600 text-white font-semibold' : 'border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition'}" type="button" data-page="${i}">${i}</button>`;
+     }
+
+     // Next button
+     html += `<button aria-label="Trang tiếp theo" class="px-3 py-1 rounded-md border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition" ${currentPage === totalPages ? 'disabled' : ''} type="button" data-page="${currentPage + 1}">
+       <i class="fas fa-chevron-right"></i>
+     </button>`;
+
+     pagination.innerHTML = html;
+   }
+
+   pagination.addEventListener('click', e => {
+     if (e.target.tagName === 'BUTTON') {
+       const page = Number(e.target.getAttribute('data-page'));
+       if (!isNaN(page) && page >= 1 && page <= Math.ceil(filteredJobs.length / ITEMS_PER_PAGE)) {
+         currentPage = page;
+         renderJobs(filteredJobs, currentPage);
+         window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
+     }
+   });
+
+   function normalizeString(str) {
+     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+   }
+
+   function applyFilters() {
+     const keywordRaw = filterForm.keyword.value.trim();
+     const keyword = normalizeString(keywordRaw);
+     const selectedCategories = Array.from(filterForm.category.selectedOptions).map(o => o.value);
+     const selectedSkills = Array.from(filterForm.skills.selectedOptions).map(o => o.value);
+     const priceMin = parseFloat(filterForm['price-min'].value);
+     const priceMax = parseFloat(filterForm['price-max'].value);
+     const priceTypes = Array.from(filterForm.querySelectorAll('input[name="price-type"]:checked')).map(i => i.value);
+     const ratingMin = parseFloat(filterForm['rating-min'].value);
+
+     filteredJobs = jobsData.filter(job => {
+       // Từ khóa: tìm trong title và description, bỏ dấu, không phân biệt hoa thường
+       if (keyword) {
+         const title = normalizeString(job.title);
+         const description = normalizeString(job.description);
+         if (!title.includes(keyword) && !description.includes(keyword)) {
+           return false;
+         }
+       }
+       // Ngành nghề: nếu chọn thì phải có trong danh sách
+       if (selectedCategories.length > 0 && !selectedCategories.includes(job.category)) {
+         return false;
+       }
+       // Kỹ năng: nếu chọn thì job phải có ít nhất 1 trong các kỹ năng được chọn (OR logic)
+       if (selectedSkills.length > 0) {
+         const hasSkill = selectedSkills.some(skill => job.skills.includes(skill));
+         if (!hasSkill) {
+           return false;
+         }
+       }
+       // Giá: lọc theo khoảng giá, xét cả min và max của job
+       if (!isNaN(priceMin) && job.priceMax < priceMin) {
+         return false;
+       }
+       if (!isNaN(priceMax) && job.priceMin > priceMax) {
+         return false;
+       }
+       // Loại giá: phải nằm trong các loại được chọn
+       if (priceTypes.length > 0 && !priceTypes.includes(job.priceType)) {
+         return false;
+       }
+       // Đánh giá tối thiểu
+       if (!isNaN(ratingMin) && job.rating < ratingMin) {
+         return false;
+       }
+       return true;
+     });
+
+     currentPage = 1;
+     renderJobs(filteredJobs, currentPage);
+   }
+
+   filterForm.addEventListener('submit', () => {
+     applyFilters();
+   });
+
+   if (clearFiltersBtn) {
+     console.log('clearFiltersBtn found and event listener attached');
+     clearFiltersBtn.addEventListener('click', () => {
+       // Reset tất cả các trường về mặc định
+       filterForm.reset();
+
+       // Đặt lại checkbox loại giá về checked (mặc định)
+       const priceTypeCheckboxes = filterForm.querySelectorAll('input[name="price-type"]');
+       priceTypeCheckboxes.forEach(cb => cb.checked = true);
+
+       // Xóa chọn tất cả các option multiple select
+       const multiSelects = [filterForm.category, filterForm.skills];
+       multiSelects.forEach(select => {
+         for (let i = 0; i < select.options.length; i++) {
+           select.options[i].selected = false;
+         }
+       });
+
+       // Áp dụng lại bộ lọc (hiển thị tất cả)
+       applyFilters();
+     });
+   } else {
+     console.warn('clearFiltersBtn not found');
+   }
+
+   // Khởi tạo danh sách việc làm
+   renderJobs(jobsData, 1);
+  </script>
+ </body>
+</html>
